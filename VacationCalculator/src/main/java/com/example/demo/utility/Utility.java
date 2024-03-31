@@ -18,19 +18,10 @@ public class Utility {
     
 
     public static boolean isWorkingDay(LocalDate date) {
-	    
-	    if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
-	        return false;
-	    }
-
-	    if (isHoliday(date)) { 
-	        return false;
-	    }
-
-	    return true;
+    	return  !(isHoliday(date) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY);
 	}
     
-    public static boolean isHoliday(LocalDate date) {// Проверка на выходной
+    public static boolean isHoliday(LocalDate date) { // Проверка на выходной
 	    
 		return holidays.contains(date);
 	}

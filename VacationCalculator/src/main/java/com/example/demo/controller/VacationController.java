@@ -23,12 +23,9 @@ public class VacationController {
 		
 		double vacationPay; // переменная для хранения результата
 	    
-	    if(startDate != null && endDate != null) {
-	        vacationPay =  vacationService.calculatePayWithDates(averageSalary, vacationDays, startDate, endDate);
-	    }
-	    else {
-	    	vacationPay = vacationService.calculatePay(averageSalary, vacationDays);
-	    }
+	    vacationPay = (startDate != null && endDate != null) ?  
+	    		vacationService.calculatePayWithDates(averageSalary, vacationDays, startDate, endDate) : 
+	    		vacationService.calculatePay(averageSalary, vacationDays);
 	    
 	    VacationResponse response = new VacationResponse();
 	    response.setVacationPay(vacationPay);
